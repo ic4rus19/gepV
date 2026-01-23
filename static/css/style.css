@@ -1,0 +1,122 @@
+/* - GEPV00 - style.css- Bootstrap + FontAwesome + estilos propios */
+
+/* -1) Reset básico------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* -2) Variables del proyecto
+   ------------------------- */
+:root {
+    --white: #ffffff;
+
+    /* Paleta */
+    --blue: #a8f5fb;
+    /* Fondo navbar */
+    --blueF: #005277;
+    /* Color énfasis / hover */
+    --black: #221824;
+
+    /* Texto */
+    --textwhite: #ffffff;
+    --textblack: #252524;
+
+    /* UI */
+    --border: #e6e8ee;
+    --muted: #cccccc;
+
+    /* Tipografía */
+    --font: 'Raleway', sans-serif;
+}
+
+/* -3) Base ------------------------- */
+body {
+    font-family: var(--font);
+}
+
+/* -4) Navbar (fondo 100% + contenido centrado por .container)Brand izquierda - Menú derecha (con ms-auto en el HTML)
+   ------------------------- */
+.navbar {
+    background-color: var(--blue);
+    border-bottom: 1px solid var(--border);
+    transition: transform 0.3s ease;
+    /* para el hide/show del navbar.js */
+}
+
+.navbar .navbar-brand {
+    font-weight: 800;
+    color: var(--textblack);
+}
+
+.navbar .nav-link {
+    font-weight: 700;
+    color: var(--textblack);
+}
+
+.navbar .nav-link:hover {
+    color: var(--blueF);
+}
+
+.navbar .nav-link.active {
+    color: var(--blueF);
+}
+
+/* Navbar oculto/visible (lo usa navbar.js) */
+.nav-hidden {
+    transform: translateY(-120%);
+}
+
+.nav-visible {
+    transform: translateY(0);
+}
+
+/* -5) Secciones   ------------------------- */
+section {
+    position: relative;
+    width: 100%;
+}
+
+/* -6) Imágenes   ------------------------- */
+.img-soft {
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* -7) Iconos sociales   ------------------------- */
+.social-icon {
+    color: var(--muted);
+    margin: 0 5px;
+    font-size: 30px;
+}
+
+.social-icon:hover {
+    color: var(--textwhite);
+}
+
+/* -   Navbar toggler: hamburguesa ↔ X (cerrar) */
+
+/* - Icono hamburguesa (estado normal) */
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2834,24,36,0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* -Icono X cuando el menú está abierto */
+.navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2834,24,36,0.9%29' stroke-linecap='round' stroke-width='2' d='M6 6l18 18M6 24L24 6'/%3e%3c/svg%3e");
+}
+
+
+/* -Navbar: fondo casi transparente cuando el menú móvil está abierto */
+
+/* Solo en móvil */
+@media (max-width: 991.98px) {
+
+    /* Cuando el menú hamburguesa está abierto */
+    .navbar:has(.navbar-toggler[aria-expanded="true"]) {
+        background-color: rgba(168, 245, 251, 0.10);
+        /* --blue pero suave */
+        backdrop-filter: blur(6px);
+    }
+}

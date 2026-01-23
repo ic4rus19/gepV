@@ -1,0 +1,19 @@
+<!-- *00 PRESENTAMOS -->
+<!-- *AGREGAMOS MENU DE NAVEGACIÓN -->
+<!-- *AGREGAMOS BIENVENIDA -->
+
+{% extends 'base.html'%}
+
+{% block title %}Gestió d'Espais Publics{% endblock %}
+
+{% block content %}
+<!-- -Incluimos menú de navegació -->
+    {% include 'nav.html' %}
+
+<!-- -Benvinguda -->
+    {% include 'home.html' %}
+
+<!-- -Gestió d'espais -->
+    {% include 'gestio.html' %}
+
+{% endblock %}
