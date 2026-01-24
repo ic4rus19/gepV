@@ -16,11 +16,11 @@ Borrado de memoria de PS:
 8. pip llist                Comprobamos
 9. deactivate               Desactivamos el entorno
 
-INSTALACIÓN DE DEPENDENCIAS PARA LOS PROYECTOS
-11.Formularios o Editor de texto enriquecido en tus formularios Flask
+# INSTALACIÓN DE DEPENDENCIAS PARA LOS PROYECTOS
+11. Formularios o Editor de texto enriquecido en tus formularios Flask
     pip install -U Flask-WTF
     pip install flask-ckeditor
-12.flask SQLAlchemy         Base de Datos
+12. flask SQLAlchemy         Base de Datos
     pip install Flask-SQLAlchemy
 
           
@@ -40,64 +40,84 @@ INSTALACIÓN DE DEPENDENCIAS PARA LOS PROYECTOS
 
 ATENTOS A LA CLASE 11..
 
-# Utilizar el entorno de pruebas de phytonAnywhere
+# Utilizar el ENTORNO DE PRUEBAS de phytonAnywhere
 
 # Creamos en nuestro proyecto el archivo de requirements.txt
     pip freeze > requirements.txt
 # Creamos el repositorio github (fáci)
-# Desde nuestro PC directorio de nuestros proyectos.
+    Nuevo repositorio etc.
+# Git en nuestro PC directorio de nuestros proyectos.
     con powershell:
     git clone https://github.com/ic4rus19/portafolio.git
-# Se generamos la carpeta y copiamos todo de una a otra.
-Desde la nueva carpeta accedemos a code . 
+# Generamos la carpeta y copiamos todo de una a otra.
+    Desde la nueva carpeta accedemos a code . 
 
-Luego vamos a Pythoanywhere
-    El dominio sera de pruebas y cogeara el nombre de:
-         ic4rus.pythonanywhere.com. 
+# Pythoanywhere
+    El dominio sera de pruebas y cogeara el nombre del correo:
+         ic4rus.pythonanywhere.com.
+    Accedemos a pythoanywhere      
 
-Qué es realmente un “env”
-Un venv es una carpeta con:
-    un Python “aislado” (o enlaces),pip, y todas las librerías que instalas (Flask, etc.)
-Sirve para que tu proyecto use sus propias dependencias y versiones, sin mezclarlas con otros proyectos del sistema.
+# Desde pythonAnywhere ---- WEB CREAMOS Add a new web app
+    Nos dara a elegir el framework:
+        Flask:
+            Selecionamos la Versión.
+            Creara la aplicación y nos mnostrara la ruta.
+            Inspecionamos des de web:
+                Apartado Code
+                    Atentos wsgi.py donde estará la configuración.
+                Revisamos todas las pestañas y nos acemos el menu:
+                Podemos acceder a la consola que sera de LINUX.
+                Virtualenv:
+                Qué es realmente un “env”???????
+                        Un venv es una carpeta con un Python “aislado” (o enlaces),pip, y todas las librerías que instalas (Flask, etc.)
+                        Sirve para que tu proyecto use sus propias dependencias y versiones, sin mezclarlas con otros proyectos del sistema.
+                Creamos el entorno virtual:
+                # ---ATENCIÓN-----
+                # Desde la consola en el servidor, CREAMOS el entorno virtual y clonamos el PROYECTO
+                - Podemos mirar la documentación:
+                    https://help.pythonanywhere.com/pages/Flask/
+                    Desde la raiz en bash del servidor:
+                        python --version
+                        git --version
+                        mkvirtualenv --python=python3.13 .Nombre del entornoVirtual
+                    Clonamos nuestro repositorio
+                        git clone https://github.com/ic4rus19/list-todo.git
+                    Instalamos los requerimientos de la aplicación
+                        pip install -r requirements.txt
+                        pip list      
+# DESPLEGAR LA APLICACIÓN
+    Borramos la anterior:
+    Add a new web app
+        Manual configuration:
+            En WEB:
+                Coloacamos la ruta del proyecto
+                    pwd
+                Colocamos la ruta del env creado en el servidor
+                    which python
+                    /home/ic4rus/.virtualenvs/.env-list
+                Por ultimo modificamos el archivo xxxxwsgi.py
 
-# ---ATENCIÓN-----
-# Desde la consola en el servidor, creamos el entorno virtual.
-- Podemos mirar la documentación:
-    https://help.pythonanywhere.com/pages/Flask/
-    Desde la raiz en bash del servidor:
-        python --version
-        git --version
-        mkvirtualenv --python=python3.13 .env-list
-        clonamos nuestro repositorio
-        git clone https://github.com/ic4rus19/list-todo.git
-        instalamos los requerimientos de la aplicación
-        pip install -r requirements.txt
-        pip list
-    Desplegamos desde el servidor
-        Eliminamos la antrior proyecto
-        Creamos una nueva pero con configuración manual.
-        Coloacamos la ruta del proyecto---pwd---
-        Colocamos la ruta del env creado en el servidor
-            which python
-            /home/ic4rus/.virtualenvs/.env-list
-        Por ultimo modificamos el archivo xxxxwsgi.py
-        
-        
-        import sys
-            # Añadimos la carpeta raíz del proyecto al path de Python
-            # para que el servidor pueda encontrar nuestros módulos
-            # (run.py, dashboard, etc.)
-                    project_home = '/home/ic4rus/list-todo'
-                    if project_home not in sys.path:
-                        sys.path = [project_home] + sys.path
+                import sys
+                project_home = '/home/ic4rus/Nom.PROYECTO'
+                if project_home not in sys.path:
+                    sys.path = [project_home] + sys.path
+                from run import app as application  # noqa
 
-            # Importamos la aplicación Flask desde run.py
-            # La renombramos como "application" porque los servidores WSGI
-            # esperan que la app se llame exactamente así
-                    from run import app as application  # noqa
+            Reload desde WEB
+# Actualizaciones de GitHub desde PC
+        git add .
+        git commit -m "gepv02"
+        git push origin main  
 
-        Hacemos reload y comprobamos el funcionamiento
+# Desde Servidor(enconsola y desde el directorio env)
+    Por primera vez:
+        git clone https://github.com/ic4rus19/gepVallgorguina.git
+    Luego:    
+        git pull
 
+# Comprovaciones:
+    cd ~/gepVallgorguina
+    git log -1 --oneline
 
 Endpoint =  El identificador interno de una ruta que apunta a una función.
             Flask enruta por endpoints, no por archivos
@@ -161,17 +181,7 @@ Endpoint =  El identificador interno de una ruta que apunta a una función.
             url_for() siempre usa endpoints
             Con Blueprints: blueprint.funcion
 
-# Actualizaciones de GitHub desde PC
-        git add .
-        git commit -m "gepv02"
-        git push origin main  
 
-# Desde Servidor(enconsola y desde el directorio de la app)
-    git pull
-
-# Comprovaciones:
-    cd ~/gepVallgorguina
-    git log -1 --oneline
 
 
 
