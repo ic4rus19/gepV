@@ -34,15 +34,29 @@
 /* -3) Base ------------------------- */
 body {
     font-family: var(--font);
+    padding-top: 75px;
+    /* ajusta si tu navbar es más alto */
+}
+
+/* Título principal (hero) */
+.hero-title {
+    font-weight: 800;
+    /* muy contundente */
+}
+
+/* Título secundario (hero) */
+.hero-title-secundari {
+    font-weight: 800;
+    /* muy contundente */
 }
 
 /* -4) Navbar (fondo 100% + contenido centrado por .container)Brand izquierda - Menú derecha (con ms-auto en el HTML)
    ------------------------- */
 .navbar {
+
     background-color: var(--blue);
     border-bottom: 1px solid var(--border);
     transition: transform 0.3s ease;
-    /* para el hide/show del navbar.js */
 }
 
 .navbar .navbar-brand {
@@ -84,18 +98,6 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* -7) Iconos sociales   ------------------------- */
-.social-icon {
-    color: var(--muted);
-    margin: 0 5px;
-    font-size: 30px;
-}
-
-.social-icon:hover {
-    color: var(--textwhite);
-}
-
-/* -   Navbar toggler: hamburguesa ↔ X (cerrar) */
 
 /* - Icono hamburguesa (estado normal) */
 .navbar-light .navbar-toggler-icon {
@@ -107,16 +109,84 @@ section {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2834,24,36,0.9%29' stroke-linecap='round' stroke-width='2' d='M6 6l18 18M6 24L24 6'/%3e%3c/svg%3e");
 }
 
+/* Iconos de las cards */
+.card-icon {
+    font-size: 2rem;
+    /* un poco más pequeño al ir en horizontal */
+    color: var(--blueF);
+}
+
+
+.card {
+    text-align: center;
+}
+
 
 /* -Navbar: fondo casi transparente cuando el menú móvil está abierto */
 
 /* Solo en móvil */
 @media (max-width: 991.98px) {
 
-    /* Cuando el menú hamburguesa está abierto */
+    /* -Cuando el menú hamburguesa está abierto */
     .navbar:has(.navbar-toggler[aria-expanded="true"]) {
         background-color: rgba(168, 245, 251, 0.10);
         /* --blue pero suave */
         backdrop-filter: blur(6px);
     }
+}
+
+/* -Footer */
+.footer {
+    background-color: var(--blue);
+    color: var(--color-6);
+}
+
+.footer-text-dark {
+    color: var(--black);
+}
+
+/* -7) Iconos sociales   ------------------------- */
+
+.social-icon {
+    color: var(--color-1);
+    margin: 0 5px;
+    font-size: 30px;
+}
+
+.social-icon:hover {
+    color: var(--color-7)
+}
+
+/* Texto legal del footer (más pequeño) */
+.footer-legal p {
+    font-size: 0.65rem;
+    /* más pequeño pero legible */
+    font-weight: 600;
+    /* ← negrita suave y elegante */
+    margin: 0;
+}
+
+/* Botón cards – hover con color corporativo */
+.btn-outline-primary {
+    --bs-btn-color: var(--blueF);
+    --bs-btn-border-color: var(--blueF);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--blueF);
+    border-color: var(--blueF);
+    color: #ffffff;
+}
+
+/* Botón principal – inversión de colores en hover */
+.btn-primary {
+    --bs-btn-bg: var(--blueF);
+    --bs-btn-border-color: var(--blueF);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #ffffff;
+    border-color: var(--blueF);
+    color: var(--blueF);
 }

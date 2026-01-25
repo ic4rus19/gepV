@@ -1,0 +1,456 @@
+/*! HOJA DE ESTILOS CSS PARTICULAR PARA CADA PROYECTO.*/
+	/* //////////////////////////////////////////////////////ABOUT * ///////////////////////////////////////////////
+/*- author:AGY; */
+/*- version:1.0; */
+/*- date:20240223 */
+/*- description: manualñ de hoja de styls coorporativos */
+
+/*! BORDE GUIA*/
+ /* *{border: 1px dashed var(--color-6)!important;} */
+
+ /* *{border: 1px dotted var(--color-5)!important;} */
+
+/*- MANUAL DE ESTILOS CORPORATIVOS */
+
+
+/*!  INDEX */
+	/* //00- HEADER */
+	/* //#0- VARIABLES */
+	/* //#1- COLORS */
+	/* //#2- TIPOGRAPHY */
+	/* //#3- FORMATO DE TEXTOS	 */
+		/* *##1- Headings */
+		/* *##2- paragraphs */
+	/* //#4- BUTTONS */
+	/* //#5- IMAGES */	
+	/* //#7- ICONS */
+	/* //#8- RESSOURCES */
+	/* //#9- FORMS */
+	/* //10- MENUS */
+	/* //11- POPUP */
+	
+
+	/* //- TABLES */
+
+	/* -------------------------------------------------------- */
+	/* //HOME */
+
+	/* //PRODUCT- SINGLE */
+	/* //BLOG */
+	/* //CONTACT PAGE */
+	/* //404 */
+	/* //MAINTENANCE */
+
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////// #11- HEADER */
+
+/*- Para darle al header un determinado ancho o height*/
+header{
+	/*- El HEader tendra si o si 250px*/
+	/* min-height: 250px; */
+	/* background-image: url('../media/img/Theta\ _ULS.jpg'); */
+    background-size: cover; 
+	/* justify-content: flex-end; */
+	/* align-items: flex-start; */
+	/* align-content: center; */
+}	
+
+/*/////////////////////////////////////////////////////////// #0- VARIABLES ///////////////////////////////////////////////////////// */
+:root {
+    --color-1: #344d90;     /*-bluSky-primario*/
+    --color-2: #5cc5ef;   	 /*- fiels-secundario*/
+    --color-3: #1b8f76;     /*-pime-acentuado*/
+    --color-4: #ffb745;     /*-Oro- neutro 1*/
+    --color-5: #e7552c;     /*-Oro- neutro 1*/    
+    --color-6: #000000;     /*-negro*/
+    --color-7: #ffffff;     /*-blanco*/
+	--color-8: #DFE9F3;     /*-Gris-claro-neutro 2*/
+	--color-9: #b3b3b3;	 /*-sombra */	
+	--color-text: #212529;  /*- texto*/
+}
+
+/*//////////////////////////////////////////////////////////// #1- COLORS /////////////////////////////////////////////////////////////*/
+.color-1{color:var(--color-1);}
+.color-2{color:var(--color-2);}
+.color-3{color:var(--color-3);}
+.color-4{color:var(--color-4);}
+.color-5{color:var(--color-5);}
+.color-6{color:var(--color-6);}
+.color-7{color:var(--color-7);}
+.color-8{color:var(--color-8);}
+
+.bg-color-1{background-color:var(--color-1);}
+.bg-color-2{background-color:var(--color-2);}
+.bg-color-3{background-color:var(--color-3);}
+.bg-color-4{background-color:var(--color-4);}
+.bg-color-5{background-color:var(--color-5);}
+.bg-color-6{background-color:var(--color-6);}
+.bg-color-7{background-color:var(--color-7);}
+.bg-color-8{background-color:var(--color-8);}
+
+
+/* ////////////////////////////////////////////////////////// #2- TIPOGRAPHY ////////////////////////////////////////////////////////////*/
+
+@font-face {
+    font-family:'Ubuntu';
+    src: url('../font/Ubuntu/Ubuntu-Regular.ttf')}
+
+@font-face {
+	font-family:'Roboto';
+	src: url('../font/Roboto/Roboto-Regular.ttf');
+}
+
+/*///////////////////////////////////////////////////////// ENCABEZADOS ////////////////////////////////////////////////*/
+@font-face {
+	font-family: 'Bevan';
+	src: url('../font/Bevan/Bevan-Regular.ttf');
+}
+@font-face {
+	font-family:'TitanOne';
+	src: url('../font/TitanOne/TitanOne-Regular.ttf');
+}
+@font-face {
+	font-family: 'Merriweather';
+	src: url('../font/Merriweather/Merriweather-Regular.ttf');
+}
+@font-face{
+    font-family:'Roboto';
+    src: url('../font/Roboto/Roboto-Regular.ttf');
+    font-weight:normal;
+    font-style:normal;
+}
+@font-face{
+    font-family:'Roboto';
+    src: url('../fonts/Roboto/Roboto-Italic.ttf');
+    font-weight:normal;
+    font-style:italic;
+}
+@font-face{
+    font-family:'Roboto';
+    src: url('../font/Roboto/Roboto-Bold.ttf');
+    font-weight:bold;
+    font-style:normal;
+}
+@font-face{
+    font-family:'Roboto';
+    src: url('../fonts/Roboto/Roboto-BoldItalic.ttf');
+    font-weight:bold;
+    font-style:italic;
+}
+/* ////////////////////////////////////////////////////////// #3- FORMATO DE TEXTOS	 //////////////////////////////////////////////////////*/
+html,body{
+	/* font-family:'Ubuntu',sans-serif; */
+    font-family:'Roboto',sans-serif;	
+	/* font-family: 'Lato', sans-serif; */
+	/* font-family: 'Merriweather', sans-serif; */
+	/* font-family: 'TitanOne', sans-serif; */
+	/* margin-top: 10px; */
+	color: var(--color-text);
+	font-weight: 400;
+	line-height: 1.5rem;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family:'Roboto',sans-serif;
+	/* font-family: 'Bevan'; */
+	/* font-family:'Merriweather', sans-serif; */
+	margin-bottom: 0.5rem;     /*// margen inferior*/ 
+	font-weight: 700;
+}
+
+/*// Creamos la clase .h*/
+h1, .h1{font-size:2.5rem; color:var(--color-6);line-height:2.6rem;} /*- Atentos a la altura de linea*/
+h2, .h2{font-size:   2rem;color:var(--color-6);line-height:2.1rem;}
+h3, .h3{font-size:1.75rem;color:var(--color-6);line-height:1.8rem;}
+h4, .h4{font-size: 1.5rem;color:var(--color-6);line-height:1.6rem;}
+h5, .h5{font-size:1.25rem;color:var(--color-6);line-height:1.3rem;}
+h6, .h6{font-size:   1rem;color:var(--color-6);line-height:1.1rem;}
+
+a{ font-size: italic; text-decoration: none;}
+
+p{ margin-bottom: 1rem;}
+
+figcaption {
+	margin: 0 0 10px; /*- Agrega un espacio en la parte inferior del bloque de cita */
+	padding: 0px;   
+	color:var(--color-6); /* Cambia el color del texto de la cita para distinguirlo */
+	font-style: normal;
+	margin: 15px;
+	/* font-weight: 900; */
+}
+.center{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	justify-content:center;
+}
+.justify{
+	text-align: justify;
+	margin-left: auto;
+	margin-right: auto;
+}
+.end{
+	text-align: end;
+	margin-left: auto;
+	margin-right: auto;
+	justify-content:end;
+}
+.left{
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+	justify-content:left;
+}
+.right{
+	text-align: right;
+	margin-left: auto;
+	margin-right: auto;
+	justify-content:right;
+}
+
+blockquote {
+	margin: 0 0 0px; /*- Agrega un espacio en la parte inferior del bloque de cita */
+	padding: 10px;   
+	color:var(--color-6); /* Cambia el color del texto de la cita para distinguirlo */
+	/* font-style: italic; */
+	font-size: 1rem;
+	/* font-weight: bold; */
+}
+blockquote p {
+	margin: 0;
+}
+
+cite{
+	font-size: 1rem;
+	font-style: italic;
+	/* font-weight: bold; */
+}
+cite:hover{
+	font-weight: bold;
+	color: var(--color-7);
+}
+
+/* /////////////////////////////////////////////////////////// #4- BUTTONS ////////////////////////////////////////////////////////////////*/
+
+/* ////////////////////////////////////////////////////////// #5- IMAGES o MEDIA ///////////////////////////////////////////////////////////////////////*/
+
+video{padding: 2rem;}
+
+img {max-width: 100%; height: auto;}
+
+/* ////////////////////////////////////////////////////////// #8- RESSOURCES o RECURSOS   //////////////////////////////////////////////////////// */
+
+html{scroll-behavior: smooth;}		/*-Para el control de desplazamiento en el scroll*/
+
+
+									/*- padings que dibujan una linea de separacion*/
+.padding-1 {padding:  1px;  width: 50%; margin-left: auto; margin-right: 0%; background-color: var(--color-6);}
+.padding-2 {padding:  2px;  width: 75%; margin-left: auto; margin-left: 0%; background-color: var(--color-7);}
+.padding-4 {padding:  4px;  background-color: var(--color-7);}
+.padding-8 {padding:  8px;	background-color: var(--color-1);}
+.padding-12{padding: 12px;	background-color: var(--color-1);}
+.padding-16{padding: 16px;	background-color: var(--color-1);}
+.padding-22{padding: 22px;	background-color: var(--color-1);}
+
+	
+	/* border-radius: 10px; */
+	
+/*- ICONO ANCLA <i class="fa-solid fa-arrow-up-from-bracket"></i> */
+
+
+.ancla{
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+
+	width: 40px;
+	height: 40px;
+	opacity: 0.3;
+
+	display: inline-block;
+	padding: 0.3rem;	
+	/* text-decoration: none; */
+	/* text-transform: uppercase; */
+	/* text-align: center; */	
+	transition: all ease-in-out 200ms;  /*- Tiempo para la transition */
+}
+.ancla:hover{
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+
+	width: 50px;
+	height: 50px;
+	opacity: 0.9;
+}
+
+.telefono-flotante{
+	display: inline-block;
+	position:fixed;
+	top: 10px;
+	right: 0;
+
+	padding: 0.3rem;
+	border: 1px solid black;
+	background-color:var(--color-7);
+	font-size: 0.8rem;
+}
+/*- banner*/
+.rgpd {
+	position: fixed;
+	right: 10px;
+	top: 10px;
+
+	width: 220px;
+	max-width: 300px;
+	padding: 1em;
+	border: 1px solid #000;
+	border-radius: 5PX;
+	background-color: rgb(10, 10, 10, .2);
+}
+.rgpd:hover {
+	position: fixed;	
+	right: 10px;
+	top: 10px;
+
+	width: 220px;
+	max-width: 300px;
+	padding: 1em;
+	border: 1px solid #000;
+	border-radius: 5PX;
+	background-color: rgb(10, 10, 10, .2);
+}
+.rgpd p {
+	line-height: 1.5em;
+	color: white;
+	text-align: center;
+}
+
+noscript{
+	position:fixed;
+	top:0;left:0;
+	width:100vw;
+	height:100vh;
+	background-color:#fff;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////// #9- FORMS ////////////////////////////////////////////////*/
+
+
+form{
+	width:95%;
+	max-width:400px;
+	border-radius:10px;
+	margin:auto;
+}
+form label{
+	padding:3px !important;
+	font-weight:bold;
+}
+form ::placeholder{
+	font-style: italic;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="url"],
+form input[type="tel"],
+form input[type="password"],
+form input[type="number"]{
+	padding:3px;
+	outline:none;
+	border:none;
+	border-bottom:2px solid #000;
+	background-color:var(--color-8);
+	background-repeat: no-repeat;
+	background-position:95% 50%;
+}
+
+form input[type="text"]:focus:valid,
+form input[type="email"]:focus:valid,
+form input[type="url"]:focus:valid,
+form input[type="tel"]:focus:valid
+form input[type="password"]:focus:valid,
+form input[type="number"]:focus:valid
+{
+	border-bottom:2px solid darkgreen;
+	background-image:url('../img/ok.svg');
+}
+form input[type="text"]:focus:invalid,
+form input[type="email"]:focus:invalid,
+form input[type="url"]:focus:invalid,
+form input[type="tel"]:focus:invalid,
+form input[type="password"]:focus:invalid,
+form input[type="number"]:focus:invalid
+{
+	border-bottom:2px solid crimson;
+	background-image:url('../img/ko.svg');
+}
+
+
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////////// #10- MENUS ////////////////////////////////////////////////*/
+
+/* nav li {list-style-type: none;
+		display: flex;
+		flex-flow: row nowrap;} */
+
+nav a{display: block;} /*- se mostrarán como bloques. Esto significa que ocuparán todo el ancho disponible dentro del contenedor */
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////11- POPUP /////////////////////////////////////////////*/
+.container-modal{
+	position: fixed;
+	top: 0; left: 0;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 100vw;
+	height: 100vh;
+	background:url('https://picsum.photos/1800/1200') no-repeat center;
+	background-size: cover;
+}
+.modal{
+	width: 100%;
+	max-width: 500px;
+	padding: 1rem;
+	border: 2px solid var(--color-1);
+	border-radius: 5px;
+	background-color: rgba(0, 0, 0, 0.1);
+
+	box-shadow: 5px 5px 0px 10px rgba( 0, 0, .0, 0.5);
+
+	transform: scale(0);
+	transition: transform 600ms ease;
+}
+
+.modal-show{
+	transform: scale(1);
+}
+
+/*//////////////////////////////////////////////////////////MEDIAS @ MOBILE FIRST METHOD*/
+
+/*//==========  Mobile First Method  ==========*/
+
+/*// xs- Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {}
+
+/*// -sm- Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/*// -md- Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/*// -lg- Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/*// -xl- Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
+
+/*// -xxl- Extra super large devices (large laptops and desktops, 1400px and up) */
+@media only screen and (min-width: 1400px) {}
+
