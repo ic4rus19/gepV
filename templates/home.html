@@ -5,14 +5,22 @@
         <div class="row flex-lg-row-reverse align-items-center g-2 py-2">
             <div class="col-10 col-sm-8 col-lg-6">
                 <img src="{{ url_for('static', filename='img/vallgorguina_00.jpg') }}"
-                    class="d-block mx-lg-auto img-fluid img-soft img-animate" alt="Espais públics Vallgorguina" loading="lazy">
+                    class="d-block mx-lg-auto img-fluid img-soft img-animate" alt="Espais públics Vallgorguina"
+                    loading="lazy">
             </div>
 
             <div class="col-lg-6">
-                <h1 class="display-4 hero-title">Espais públics Vallgorguina.</h1>
-                <hr class="my-4">
+                <!-- TÍTULO + ICONO/IMAGEN V1 -->
+                <div class="hero-title-row">
+                    <img src="{{ url_for('static', filename='img/V1.png') }}" class="hero-icon" alt="Espais públics"
+                        loading="lazy">
+                    <h1 class="display-4 hero-title mb-0">
+                        Espais públics Vallgorguina.
+                    </h1>
+                </div>
                 <p class="fs-5">Aquí hi trobaràs tot allò relacionat amb els espais públics de Vallgorguina.</p>
                 <a class="btn btn-primary btn-lg" href="#contact" role="button">Contacta’m</a>
+
             </div>
         </div>
     </div>

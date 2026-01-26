@@ -121,6 +121,23 @@ section {
     text-align: center;
 }
 
+/* Título + imagen V1 alineados */
+.hero-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* ← centra horizontalmente */
+    gap: 5rem;
+}
+
+/* Imagen V1 */
+.hero-icon {
+
+    max-height: 64px;
+    /* ajusta a gusto: 48 / 56 / 64 */
+    width: auto;
+}
+
 
 /* -Navbar: fondo casi transparente cuando el menú móvil está abierto */
 
