@@ -66,6 +66,48 @@ def neteja():
         q=q
     )
 
+# ---------- MODELO ----------
+class Claus(db.Model):
+    __tablename__ = "claus"
+
+    id = db.Column(db.Integer, primary_key=True)
+    nom_porta = db.Column(db.String(255), nullable=False)
+    nom_espai = db.Column(db.String(255), nullable=False)
+    armari = db.Column(db.String(100), nullable=False)
+    num = db.Column(db.Integer, nullable=False)
+    
+# ---------- /Claus ----------
+@app.route("/claus")
+def claus():
+    titulo = "Gestió de claus"
+
+    q = (request.args.get("q") or "").strip()
+    page = request.args.get("page", 1, type=int)
+    per_page = 25
+
+    query = Claus.query
+
+    if q:
+        query = query.filter(
+            (Claus.nom_porta.ilike(f"{q}%")) |
+            (Claus.nom_espai.ilike(f"{q}%")) |
+            (Claus.armari.ilike(f"{q}%"))
+        )
+
+    pagination = query.order_by(
+        Claus.nom_espai.asc(),
+        Claus.nom_porta.asc(),
+        Claus.num.asc(),
+        Claus.id.asc()
+    ).paginate(page=page, per_page=per_page, error_out=False)
+
+    return render_template(
+        "claus.html",
+        titulo=titulo,
+        rows=pagination.items,
+        pagination=pagination,
+        q=q
+    )
 
 # ---------- CREAR TABLAS 1 VEZ ----------
 

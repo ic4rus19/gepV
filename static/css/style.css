@@ -1,22 +1,24 @@
-/* - GEPV00 - style.css- Bootstrap + FontAwesome + estilos propios */
+/* -=========================================================
+   -GEPV00 - style.css
+   -Bootstrap + FontAwesome + estilos propios
+   ========================================================= */
 
-/* -1) Reset básico------------------------- */
+/* -1) Reset básico ---------------------------------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* -2) Variables del proyecto
-   ------------------------- */
+/* -2) Variables del proyecto ------------------------------ */
 :root {
     --white: #ffffff;
 
     /* Paleta */
     --blue: #a8f5fb;
-    /* Fondo navbar */
+    /* fondo navbar / bloques claros */
     --blueF: #005277;
-    /* Color énfasis / hover */
+    /* corporativo (hover / botones / énfasis) */
     --black: #221824;
 
     /* Texto */
@@ -24,36 +26,46 @@
     --textblack: #252524;
 
     /* UI */
-    --border: #e6e8ee;
+    --borderW: #e6e8ee;
+    --borderB: #01040e;
     --muted: #cccccc;
 
     /* Tipografía */
     --font: 'Raleway', sans-serif;
 }
 
-/* -3) Base ------------------------- */
+/* -3) Base ------------------------------------------------ */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+    /* para anchors con navbar fixed */
+}
+
 body {
     font-family: var(--font);
     padding-top: 75px;
-    /* ajusta si tu navbar es más alto */
+    /* navbar fixed-top */
+    color: var(--textblack);
+    background: var(--white);
 }
 
-/* Título principal (hero) */
+section {
+    position: relative;
+    width: 100%;
+}
+
+/* -4) Tipografía (Hero) ----------------------------------- */
 .hero-title {
     font-weight: 800;
-    /* muy contundente */
 }
 
-/* Título secundario (hero) */
+/* -(si realmente lo usas; si no, puedes borrarlo) */
 .hero-title-secundari {
     font-weight: 800;
-    /* muy contundente */
 }
 
-/* -4) Navbar (fondo 100% + contenido centrado por .container)Brand izquierda - Menú derecha (con ms-auto en el HTML)
-   ------------------------- */
+/* -5) Navbar ---------------------------------------------- */
 .navbar {
-
     background-color: var(--blue);
     border-bottom: 1px solid var(--border);
     transition: transform 0.3s ease;
@@ -69,15 +81,12 @@ body {
     color: var(--textblack);
 }
 
-.navbar .nav-link:hover {
-    color: var(--blueF);
-}
-
+.navbar .nav-link:hover,
 .navbar .nav-link.active {
     color: var(--blueF);
 }
 
-/* Navbar oculto/visible (lo usa navbar.js) */
+/* Navbar oculto/visible (navbar.js) */
 .nav-hidden {
     transform: translateY(-120%);
 }
@@ -86,20 +95,7 @@ body {
     transform: translateY(0);
 }
 
-/* -5) Secciones   ------------------------- */
-section {
-    position: relative;
-    width: 100%;
-}
-
-/* -6) Imágenes   ------------------------- */
-.img-soft {
-    border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-}
-
-
-/* - Icono hamburguesa (estado normal) */
+/* -Icono hamburguesa (normal) */
 .navbar-light .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2834,24,36,0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
@@ -109,81 +105,40 @@ section {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2834,24,36,0.9%29' stroke-linecap='round' stroke-width='2' d='M6 6l18 18M6 24L24 6'/%3e%3c/svg%3e");
 }
 
-/* Iconos de las cards */
-.card-icon {
-    font-size: 2rem;
-    /* un poco más pequeño al ir en horizontal */
-    color: var(--blueF);
-}
 
-
-.card {
-    text-align: center;
-}
-
-/* Título + imagen V1 alineados */
+/* -6) Home: icono + título (base, sin responsive aún) ------ */
 .hero-title-row {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* ← centra horizontalmente */
-    gap: 5rem;
+    gap: 1rem;
+
 }
 
-/* Imagen V1 */
 .hero-icon {
-
     max-height: 64px;
-    /* ajusta a gusto: 48 / 56 / 64 */
     width: auto;
+    flex: 0 0 auto;
 }
 
-
-/* -Navbar: fondo casi transparente cuando el menú móvil está abierto */
-
-/* Solo en móvil */
-@media (max-width: 991.98px) {
-
-    /* -Cuando el menú hamburguesa está abierto */
-    .navbar:has(.navbar-toggler[aria-expanded="true"]) {
-        background-color: rgba(168, 245, 251, 0.10);
-        /* --blue pero suave */
-        backdrop-filter: blur(6px);
-    }
+/* -7) Imágenes -------------------------------------------- */
+.img-soft {
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* -Footer */
-.footer {
-    background-color: var(--blue);
-    color: var(--color-6);
+/* -8) Cards ------------------------------------------------ */
+.card {
+    text-align: center;
 }
 
-.footer-text-dark {
-    color: var(--black);
+.card-icon {
+    font-size: 2rem;
+    color: var(--blueF);
 }
 
-/* -7) Iconos sociales   ------------------------- */
-
-.social-icon {
-    color: var(--color-1);
-    margin: 0 5px;
-    font-size: 30px;
-}
-
-.social-icon:hover {
-    color: var(--color-7)
-}
-
-/* Texto legal del footer (más pequeño) */
-.footer-legal p {
-    font-size: 0.65rem;
-    /* más pequeño pero legible */
-    font-weight: 600;
-    /* ← negrita suave y elegante */
-    margin: 0;
-}
-
-/* Botón cards – hover con color corporativo */
+/* -9) Botones (tema corporativo) -------------------------- */
+/* -Outline (cards) */
 .btn-outline-primary {
     --bs-btn-color: var(--blueF);
     --bs-btn-border-color: var(--blueF);
@@ -195,7 +150,7 @@ section {
     color: #ffffff;
 }
 
-/* Botón principal – inversión de colores en hover */
+/* -Primary (CTA) inversión hover */
 .btn-primary {
     --bs-btn-bg: var(--blueF);
     --bs-btn-border-color: var(--blueF);
@@ -206,4 +161,132 @@ section {
     background-color: #ffffff;
     border-color: var(--blueF);
     color: var(--blueF);
+}
+
+/* -10) Footer --------------------------------------------- */
+/* -Footer columnas */
+.footer-col {
+    padding: 0.75rem 0;
+    /* MISMO padding vertical */
+}
+
+.footer {
+    background-color: var(--blue);
+    /* si quieres --blueF, lo cambiamos aquí */
+    color: var(--textblack);
+}
+
+.footer-text-dark {
+    color: var(--black);
+}
+
+/* Iconos sociales */
+.social-icon {
+    color: var(--muted);
+    margin: 0 5px;
+    font-size: 30px;
+}
+
+.social-icon:hover {
+    color: var(--textwhite);
+    color: var(--blueF);
+}
+
+/* Texto legal del footer */
+.footer-legal p {
+    font-size: 0.65rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* -11) Responsive ----------------------------------------- */
+/* -Navbar móvil: menú desplegado más limpio */
+@media (max-width: 991.98px) {
+    .navbar .navbar-collapse {
+        margin-top: 0.5rem;
+    }
+
+    .navbar .navbar-nav .nav-link {
+        padding: 0.6rem 0.75rem;
+    }
+
+    /* Fondo casi transparente cuando el menú móvil está abierto */
+    .navbar:has(.navbar-toggler[aria-expanded="true"]) {
+        background-color: rgba(168, 245, 251, 0.10);
+        backdrop-filter: blur(6px);
+    }
+}
+
+
+/* -HOME.html móvil */
+@media (max-width: 575.98px) {
+
+    /* Icono centrado */
+    .hero-title-row {
+        justify-content: center;
+    }
+
+    /* Escudo más pequeño */
+    .hero-icon {
+        max-height: 40px;
+    }
+
+    /* Ocultar título principal en móvil */
+    .hero-title {
+        display: none;
+    }
+
+    /* Texto un poco más compacto */
+    #home p.fs-5 {
+        font-size: 1rem !important;
+        margin-bottom: .75rem;
+    }
+
+    /* Botón algo más pequeño */
+    #home .btn.btn-lg {
+        padding: .5rem .9rem;
+        font-size: 1rem;
+    }
+
+    /* -Imagen principal centrada + con aire */
+    #home .col-10 {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #home img.img-soft {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 90%;
+    }
+}
+/* -Footer responsive */
+@media (max-width: 767.98px) {
+    footer .text-end {
+        text-align: center !important;
+    }
+
+    footer .justify-content-end {
+        justify-content: center !important;
+    }
+
+    footer .col-md-6 {
+        text-align: center;
+    }
+}
+
+/* -Footer: línea separadora entre columnas SOLO en móvil */
+@media (max-width: 767.98px) {
+
+    .footer .footer-col {
+        padding: 1rem 0;
+    }
+
+    /* Línea entre bloques */
+    .footer .col-md-6+.col-md-6 .footer-col {
+        border-top: 1px solid var(--borderB);
+        margin-top: 1rem;
+        padding-top: 1.25rem;
+    }
 }
