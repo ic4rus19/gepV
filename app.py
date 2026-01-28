@@ -3,7 +3,7 @@
 # !flask --app app --debug run
 
 
-from flask import Flask, render_template, request
+from flask import Flask, Blueprint, render_template, request, redirect, url_for, g
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, date
 
@@ -108,6 +108,87 @@ def claus():
         pagination=pagination,
         q=q
     )
+# ---------- MODELO ----------    
+class Todo(db.Model):
+    __tablename__ = "todo"
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    desc = db.Column(db.Text, nullable=True)
+    state = db.Column(db.Boolean, default=False)
+    
+# ---------- /TODO (LISTA) ----------
+@app.route("/todo")
+def todo_list():
+    titulo = "Todo-list"
+
+    q = (request.args.get("q") or "").strip()
+    page = request.args.get("page", 1, type=int)
+    per_page = 25
+
+    query = Todo.query
+    if q:
+        # contiene (más cómodo que empieza por)
+        query = query.filter(
+            (Todo.title.ilike(f"%{q}%")) |
+            (Todo.desc.ilike(f"%{q}%"))
+        )
+
+    pagination = query.order_by(Todo.id.desc()).paginate(page=page, per_page=per_page, error_out=False)
+
+    return render_template(
+        "todo.html",
+        titulo=titulo,
+        rows=pagination.items,
+        pagination=pagination,
+        q=q
+    )
+
+
+# ---------- /TODO (CREAR) ----------
+@app.route("/todo/new", methods=["GET", "POST"])
+def todo_new():
+    titulo = "Nova tasca"
+
+    if request.method == "POST":
+        title = (request.form.get("title") or "").strip()
+        desc = (request.form.get("desc") or "").strip()
+
+        if title:
+            todo = Todo(title=title, desc=desc, state=False)
+            db.session.add(todo)
+            db.session.commit()
+            return redirect(url_for("todo_list"))
+
+    return render_template("todo_new.html", titulo=titulo)
+
+
+# ---------- /TODO (EDITAR) ----------
+@app.route("/todo/edit/<int:id>", methods=["GET", "POST"])
+def todo_edit(id):
+    todo = Todo.query.get_or_404(id)
+    titulo = "Editar tasca"
+
+    if request.method == "POST":
+        todo.title = (request.form.get("title") or "").strip()
+        todo.desc = (request.form.get("desc") or "").strip()
+        todo.state = True if request.form.get("state") == "on" else False
+
+        db.session.commit()
+        return redirect(url_for("todo_list"))
+
+    return render_template("todo_edit.html", titulo=titulo, todo=todo)
+
+
+# ---------- /TODO (BORRAR) ----------
+@app.route("/todo/delete/<int:id>", methods=["POST"])
+def todo_delete(id):
+    todo = Todo.query.get_or_404(id)
+    db.session.delete(todo)
+    db.session.commit()
+    return redirect(url_for("todo_list"))
+
+
 
 # ---------- CREAR TABLAS 1 VEZ ----------
 

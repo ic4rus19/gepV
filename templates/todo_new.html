@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{{ titulo }}{% endblock %}
+
+{% block content %}
+{% include "nav.html" %}
+
+<section class="bg-light py-4">
+    <div class="container-lg" style="max-width: 900px;">
+        <h2 class="mb-3">{{ titulo }}</h2>
+
+        <form method="post">
+            <div class="mb-3">
+                <label for="title" class="form-label">Títol</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="desc" class="form-label">Descripció</label>
+                <textarea class="form-control" id="desc" name="desc" rows="4"></textarea>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button class="btn btn-primary" type="submit">Guardar</button>
+                <a href="{{ url_for('todo_list') }}" class="btn btn-secondary">Cancel·lar</a>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% include "footer.html" %}
+{% endblock %}

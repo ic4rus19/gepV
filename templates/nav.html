@@ -13,24 +13,61 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
 
-                <!-- INICI -->
+                <!--- INICI -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('index') }}#home">
                         Inici
                     </a>
                 </li>
 
-                <!-- GESTIÓ -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('index') }}#gestio">
+                <!--- GESTIÓ (dropdown) -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="gestioDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Gestió
                     </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="gestioDropdown">
+                        <!--- GESTIÓ DE CLAUS -->
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('claus') }}">
+                                Claus
+                            </a>
+                        </li>
+                        <!--- SEPARADOR -->
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <!--- NETEJA SETMANAL -->
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('neteja') }}">
+                                N. Setmanal
+                            </a>
+                        </li>
+
+                        <!--- SEPARADOR -->
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <!--- TODO-LIST (futur) -->
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('todo_list') }}">
+                                Todo-list
+                            </a>
+                        </li>
+                        <!--- SEPARADOR -->
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                    </ul>
                 </li>
 
-                <!-- NETEJA -->
+                <!--- ESPAIS -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('neteja') }}">
-                        Neteja
+                    <a class="nav-link" href="{{ url_for('index') }}#gestio">
+                        Espais públics
                     </a>
                 </li>
 

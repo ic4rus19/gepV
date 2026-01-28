@@ -261,6 +261,7 @@ section {
         max-width: 90%;
     }
 }
+
 /* -Footer responsive */
 @media (max-width: 767.98px) {
     footer .text-end {
@@ -288,5 +289,20 @@ section {
         border-top: 1px solid var(--borderB);
         margin-top: 1rem;
         padding-top: 1.25rem;
+    }
+}
+
+/* --- TODO: botones de acciones --- */
+.todo-actions .btn {
+    width: 100%;
+    /* móvil: todos iguales y cómodos */
+}
+
+@media (min-width: 576px) {
+
+    /* sm y superior */
+    .todo-actions .btn {
+        width: auto;
+        /* desktop: tamaño natural (ya no se estira) */
     }
 }

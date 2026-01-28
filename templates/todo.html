@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}{{ titulo }}{% endblock %}
+
+{% block content %}
+{% include "nav.html" %}
+
+<section class="bg-light py-4">
+    <div class="container-lg">
+
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+            <h2 class="m-0">{{ titulo }}</h2>
+
+            <!--- BUSCADOR -->
+            <form method="get" action="{{ url_for('todo_list') }}" class="d-flex gap-2">
+                <input class="form-control" type="text" name="q" value="{{ q }}" placeholder="Buscar tasca...">
+                <button class="btn btn-primary" type="submit">Buscar</button>
+            </form>
+        </div>
+
+        <!--- BOTÓN NUEVO -->
+        <div class="mb-3">
+            <a href="{{ url_for('todo_new') }}" class="btn btn-success">Nova tasca</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th>Tasca</th>
+                        <th>Estat</th>
+                        <th class="text-end">Opcions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for t in rows %}
+                    <tr>
+                        <td>
+                            <h6 class="mb-1">{{ t.title }}</h6>
+                            <div class="text-muted">{{ t.desc or "" }}</div>
+                        </td>
+                        <td>
+                            {% if t.state %}
+                            <span class="text-success fw-semibold">Completada</span>
+                            {% else %}
+                            <span class="text-warning fw-semibold">Pendent</span>
+                            {% endif %}
+                        </td>
+
+                        <td class="text-end">
+                            <!--- BOTONES ACCIONES TODO -->
+                            <div class="todo-actions d-grid gap-2 d-sm-flex justify-content-sm-end">
+                                <a href="{{ url_for('todo_edit', id=t.id) }}" class="btn btn-info btn-sm">
+                                    Editar
+                                </a>
+
+                                <!--- ELIMINAR (POST) -->
+                                <form method="post" action="{{ url_for('todo_delete', id=t.id) }}" class="m-0"
+                                    onsubmit="return confirm('Vols eliminar aquesta tasca?');">
+                                    <button class="btn btn-danger btn-sm" type="submit">
+                                        Eliminar
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!--- PAGINACIÓN -->
+        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+            <div>
+                Pàgina {{ pagination.page }} / {{ pagination.pages if pagination.pages else 1 }}
+                ({{ pagination.total }} registres)
+            </div>
+
+            <div class="d-flex gap-2">
+                {% if pagination.has_prev %}
+                <a class="btn btn-outline-primary btn-sm"
+                    href="{{ url_for('todo_list', page=pagination.prev_num, q=q) }}">Anterior</a>
+                {% endif %}
+                {% if pagination.has_next %}
+                <a class="btn btn-outline-primary btn-sm"
+                    href="{{ url_for('todo_list', page=pagination.next_num, q=q) }}">Següent</a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% include "footer.html" %}
+{% endblock %}
