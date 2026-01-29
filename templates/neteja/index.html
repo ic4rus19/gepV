@@ -21,6 +21,7 @@
                 <thead>
                     <tr>
                         <th>Nom</th>
+                        <th>Torn</th>
                         <th>Dia</th>
                         <th>Centre</th>
                         <th>Inici</th>
@@ -30,8 +31,9 @@
                 </thead>
                 <tbody>
                     {% for r in rows %}
-                    <tr>
+                    <tr class="{% if (r.torn or '')|upper in torns_rojos %}table-danger{% endif %}">
                         <td>{{ r.nom or "" }}</td>
+                        <td>{{ r.torn or "" }}</td>
                         <td>{{ r.dia.strftime("%d/%m/%Y") if r.dia else "" }}</td>
                         <td>{{ r.centre or "" }}</td>
                         <td>{{ r.inici or "" }}</td>

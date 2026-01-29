@@ -52,7 +52,8 @@ def main():
     for cell in ws[1]:
         headers.append((str(cell.value).strip().lower() if cell.value else ""))
 
-    required = ["nom", "dia", "centre", "inici", "fi", "temps"]
+    required = ["nom", "torn", "dia", "centre", "inici", "fi", "temps"]
+
     missing = [c for c in required if c not in headers]
     if missing:
         raise ValueError(f"Faltan columnas en el Excel: {missing}. Cabeceras detectadas: {headers}")
@@ -62,6 +63,7 @@ def main():
     rows_to_insert = []
     for r in ws.iter_rows(min_row=2, values_only=True):
         nom = r[idx["nom"]]
+        torn = r[idx["torn"]]
         dia = parse_date(r[idx["dia"]])
         centre = r[idx["centre"]]
         inici = parse_time(r[idx["inici"]])
@@ -71,6 +73,7 @@ def main():
         rows_to_insert.append(
             NetejaSetmanal(
                 nom=str(nom).strip() if nom else None,
+                torn=str(torn).strip().upper() if torn else None,
                 dia=dia,
                 centre=str(centre).strip() if centre else None,
                 inici=inici,

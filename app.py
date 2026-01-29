@@ -22,6 +22,7 @@ class NetejaSetmanal(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     nom = db.Column(db.String(255), nullable=True)
+    torn = db.Column(db.String(20), nullable=True)
     dia = db.Column(db.Date, nullable=True)
     centre = db.Column(db.String(255), nullable=True)
     inici = db.Column(db.String(10), nullable=True)
@@ -39,6 +40,8 @@ def index():
 @app.route("/neteja")
 def neteja():
     titulo = "Gestió neteja setmanal"
+    torns_rojos = {"AP", "B", "V", "FESTIU"}
+
 
     q = (request.args.get("q") or "").strip()
     page = request.args.get("page", 1, type=int)
@@ -59,11 +62,12 @@ def neteja():
     ).paginate(page=page, per_page=per_page, error_out=False)
 
     return render_template(
-        "neteja.html",
+        "neteja/index.html",
         titulo=titulo,
         rows=pagination.items,
         pagination=pagination,
-        q=q
+        q=q,
+        torns_rojos=torns_rojos
     )
 
 # ---------- MODELO ----------
@@ -102,7 +106,7 @@ def claus():
     ).paginate(page=page, per_page=per_page, error_out=False)
 
     return render_template(
-        "claus.html",
+        "claus/index.html",
         titulo=titulo,
         rows=pagination.items,
         pagination=pagination,
@@ -128,7 +132,7 @@ def todo_list():
 
     query = Todo.query
     if q:
-        # contiene (más cómodo que empieza por)
+        # -contiene (más cómodo que empieza por)
         query = query.filter(
             (Todo.title.ilike(f"%{q}%")) |
             (Todo.desc.ilike(f"%{q}%"))
@@ -137,7 +141,7 @@ def todo_list():
     pagination = query.order_by(Todo.id.desc()).paginate(page=page, per_page=per_page, error_out=False)
 
     return render_template(
-        "todo.html",
+        "todo/index.html",
         titulo=titulo,
         rows=pagination.items,
         pagination=pagination,
@@ -160,7 +164,7 @@ def todo_new():
             db.session.commit()
             return redirect(url_for("todo_list"))
 
-    return render_template("todo_new.html", titulo=titulo)
+    return render_template("todo/create.html", titulo=titulo)
 
 
 # ---------- /TODO (EDITAR) ----------
@@ -177,7 +181,7 @@ def todo_edit(id):
         db.session.commit()
         return redirect(url_for("todo_list"))
 
-    return render_template("todo_edit.html", titulo=titulo, todo=todo)
+    return render_template("todo/update.html", titulo=titulo, todo=todo)
 
 
 # ---------- /TODO (BORRAR) ----------
