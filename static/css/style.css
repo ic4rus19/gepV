@@ -1,50 +1,49 @@
-/* -=========================================================
-   -GEPV00 - style.css
-   -Bootstrap + FontAwesome + estilos propios
-   ========================================================= */
+/* -GEPV00 - style.css - Bootstrap + FontAwesome + estilos propios */
 
-/* -1) Reset básico ---------------------------------------- */
+
+/* -1) RESET BÁSICO */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* -2) Variables del proyecto ------------------------------ */
+
+/* -2) VARIABLES DEL PROYECTO */
 :root {
     --white: #ffffff;
 
-    /* Paleta */
+    /* -Paleta principal */
     --blue: #a8f5fb;
-    /* fondo navbar / bloques claros */
+    /* -fondos claros */
     --blueF: #005277;
-    /* corporativo (hover / botones / énfasis) */
+    /* -corporativo */
     --black: #221824;
 
-    /* Texto */
+    /* -Texto */
     --textwhite: #ffffff;
     --textblack: #252524;
 
-    /* UI */
+    /* -UI */
     --borderW: #e6e8ee;
     --borderB: #01040e;
     --muted: #cccccc;
 
-    /* Tipografía */
+    /* -Tipografía */
     --font: 'Raleway', sans-serif;
 }
 
-/* -3) Base ------------------------------------------------ */
+
+/* -3) BASE GENERAL*/
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 85px;
-    /* para anchors con navbar fixed */
 }
 
 body {
     font-family: var(--font);
     padding-top: 75px;
-    /* navbar fixed-top */
+    /* navbar fixed */
     color: var(--textblack);
     background: var(--white);
 }
@@ -54,20 +53,21 @@ section {
     width: 100%;
 }
 
-/* -4) Tipografía (Hero) ----------------------------------- */
+
+/*-4) HERO / TIPOGRAFÍA */
 .hero-title {
     font-weight: 800;
 }
 
-/* -(si realmente lo usas; si no, puedes borrarlo) */
 .hero-title-secundari {
     font-weight: 800;
 }
 
-/* -5) Navbar ---------------------------------------------- */
+
+/*-5) NAVBAR*/
 .navbar {
     background-color: var(--blue);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--borderW);
     transition: transform 0.3s ease;
 }
 
@@ -86,7 +86,7 @@ section {
     color: var(--blueF);
 }
 
-/* Navbar oculto/visible (navbar.js) */
+/* -Navbar show / hide */
 .nav-hidden {
     transform: translateY(-120%);
 }
@@ -95,39 +95,38 @@ section {
     transform: translateY(0);
 }
 
-/* -Icono hamburguesa (normal) */
+/* Icono hamburguesa */
 .navbar-light .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2834,24,36,0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2834,24,36,0.9%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* -Icono X cuando el menú está abierto */
 .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2834,24,36,0.9%29' stroke-linecap='round' stroke-width='2' d='M6 6l18 18M6 24L24 6'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2834,24,36,0.9%29' stroke-width='2' d='M6 6l18 18M6 24L24 6'/%3e%3c/svg%3e");
 }
 
 
-/* -6) Home: icono + título (base, sin responsive aún) ------ */
+/* - 6) HOME */
 .hero-title-row {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-
 }
 
 .hero-icon {
     max-height: 64px;
     width: auto;
-    flex: 0 0 auto;
 }
 
-/* -7) Imágenes -------------------------------------------- */
+
+/* -7) IMÁGENES */
 .img-soft {
     border-radius: 14px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* -8) Cards ------------------------------------------------ */
+
+/* -8) CARDS*/
 .card {
     text-align: center;
 }
@@ -137,8 +136,8 @@ section {
     color: var(--blueF);
 }
 
-/* -9) Botones (tema corporativo) -------------------------- */
-/* -Outline (cards) */
+
+/* -9) BOTONES*/
 .btn-outline-primary {
     --bs-btn-color: var(--blueF);
     --bs-btn-border-color: var(--blueF);
@@ -150,7 +149,6 @@ section {
     color: #ffffff;
 }
 
-/* -Primary (CTA) inversión hover */
 .btn-primary {
     --bs-btn-bg: var(--blueF);
     --bs-btn-border-color: var(--blueF);
@@ -163,92 +161,65 @@ section {
     color: var(--blueF);
 }
 
-/* -10) Footer --------------------------------------------- */
-/* -Footer columnas */
-.footer-col {
-    padding: 0.75rem 0;
-    /* MISMO padding vertical */
-}
 
+/* -10) FOOTER*/
 .footer {
     background-color: var(--blue);
-    /* si quieres --blueF, lo cambiamos aquí */
     color: var(--textblack);
 }
 
-.footer-text-dark {
-    color: var(--black);
+.footer-col {
+    padding: 0.75rem 0;
 }
 
-/* Iconos sociales */
-.social-icon {
-    color: var(--muted);
-    margin: 0 5px;
-    font-size: 30px;
-}
-
-.social-icon:hover {
-    color: var(--textwhite);
-    color: var(--blueF);
-}
-
-/* Texto legal del footer */
 .footer-legal p {
     font-size: 0.65rem;
     font-weight: 600;
     margin: 0;
 }
 
-/* -11) Responsive ----------------------------------------- */
-/* -Navbar móvil: menú desplegado más limpio */
+
+/* -11) REDES SOCIALES */
+.social-icon {
+    color: var(--blueF);
+    margin: 0 6px;
+    font-size: 30px;
+    transition: color 0.2s ease;
+}
+
+.social-icon .fa-facebook:hover {
+    color: #1877f2;
+}
+
+.social-icon .fa-youtube:hover {
+    color: #ff0000;
+}
+
+.social-icon .fa-square-instagram:hover {
+    color: #e1306c;
+}
+
+.social-icon .fa-whatsapp:hover {
+    color: #25D366;
+}
+
+
+/* -12) RESPONSIVE*/
+
+/* --- Navbar móvil --- */
 @media (max-width: 991.98px) {
     .navbar .navbar-collapse {
         margin-top: 0.5rem;
     }
 
-    .navbar .navbar-nav .nav-link {
-        padding: 0.6rem 0.75rem;
-    }
-
-    /* Fondo casi transparente cuando el menú móvil está abierto */
     .navbar:has(.navbar-toggler[aria-expanded="true"]) {
         background-color: rgba(168, 245, 251, 0.10);
         backdrop-filter: blur(6px);
     }
 }
 
-
-/* -HOME.html móvil */
+/* -HOME móvil: centrar imagen principal */
 @media (max-width: 575.98px) {
-
-    /* Icono centrado */
-    .hero-title-row {
-        justify-content: center;
-    }
-
-    /* Escudo más pequeño */
-    .hero-icon {
-        max-height: 40px;
-    }
-
-    /* Ocultar título principal en móvil */
-    .hero-title {
-        display: none;
-    }
-
-    /* Texto un poco más compacto */
-    #home p.fs-5 {
-        font-size: 1rem !important;
-        margin-bottom: .75rem;
-    }
-
-    /* Botón algo más pequeño */
-    #home .btn.btn-lg {
-        padding: .5rem .9rem;
-        font-size: 1rem;
-    }
-
-    /* -Imagen principal centrada + con aire */
     #home .col-10 {
         margin-left: auto;
         margin-right: auto;
@@ -256,35 +227,44 @@ section {
 
     #home img.img-soft {
         display: block;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 90%;
+        margin: 0 auto;
+        /* centra SIEMPRE */
+        width: 100%;
+        /* ocupa el ancho de su columna */
+        max-width: 420px;
+        /* límite para que no se vea gigante (ajústalo) */
     }
 }
 
-/* -Footer responsive */
+/* --- Home móvil --- */
+@media (max-width: 575.98px) {
+    .hero-title {
+        display: none;
+    }
+
+    .hero-icon {
+        max-height: 40px;
+    }
+
+    #home p.fs-5 {
+        font-size: 1rem !important;
+    }
+
+    #home img.img-soft {
+        max-width: 90%;
+        margin: auto;
+        display: block;
+    }
+}
+
+/* --- Footer móvil --- */
 @media (max-width: 767.98px) {
-    footer .text-end {
+
+    footer .text-end,
+    footer .col-md-6 {
         text-align: center !important;
     }
 
-    footer .justify-content-end {
-        justify-content: center !important;
-    }
-
-    footer .col-md-6 {
-        text-align: center;
-    }
-}
-
-/* -Footer: línea separadora entre columnas SOLO en móvil */
-@media (max-width: 767.98px) {
-
-    .footer .footer-col {
-        padding: 1rem 0;
-    }
-
-    /* Línea entre bloques */
     .footer .col-md-6+.col-md-6 .footer-col {
         border-top: 1px solid var(--borderB);
         margin-top: 1rem;
@@ -292,17 +272,13 @@ section {
     }
 }
 
-/* --- TODO: botones de acciones --- */
+/* --- TODO: botones acciones --- */
 .todo-actions .btn {
     width: 100%;
-    /* móvil: todos iguales y cómodos */
 }
 
 @media (min-width: 576px) {
-
-    /* sm y superior */
     .todo-actions .btn {
         width: auto;
-        /* desktop: tamaño natural (ya no se estira) */
     }
 }
