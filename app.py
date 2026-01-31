@@ -37,6 +37,19 @@ def index():
 
 
 # ---------- /NETEJA ----------
+def parse_date_q(q):
+    """Intenta convertir el texto de búsqueda en una fecha."""
+    for fmt in ("%d/%m/%Y", "%Y-%m-%d", "%d/%m"):
+        try:
+            d = datetime.strptime(q, fmt)
+            # si no hay año, asumimos el actual
+            if "%Y" not in fmt:
+                d = d.replace(year=datetime.now().year)
+            return d.date()
+        except ValueError:
+            pass
+    return None
+
 @app.route("/neteja")
 def neteja():
     titulo = "Gestió neteja setmanal"
@@ -50,10 +63,18 @@ def neteja():
     query = NetejaSetmanal.query.filter(NetejaSetmanal.dia.isnot(None))
 
     if q:
-        query = query.filter(
-            (NetejaSetmanal.nom.ilike(f"{q}%")) |
-            (NetejaSetmanal.centre.ilike(f"{q}%"))
+        fecha = parse_date_q(q)
+
+        if fecha:
+        # Buscar por día exacto
+            query = query.filter(NetejaSetmanal.dia == fecha)
+        else:
+        # Buscar por texto
+            query = query.filter(
+                (NetejaSetmanal.nom.ilike(f"%{q}%")) |
+                (NetejaSetmanal.centre.ilike(f"%{q}%"))
         )
+
 
     pagination = query.order_by(
         NetejaSetmanal.dia.asc(),

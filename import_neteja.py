@@ -4,7 +4,7 @@ from openpyxl import load_workbook
 from app import app, db, NetejaSetmanal  # usa tu app.py (sin paquete)
 
 
-EXCEL_PATH = "data/neteja_setmanal.xlsx"
+EXCEL_PATH = "data/netejaS.xlsx"
 
 
 def parse_date(value):
@@ -90,7 +90,7 @@ def main():
         db.session.bulk_save_objects(rows_to_insert)
         db.session.commit()
 
-        print(f"✅ Import OK: {len(rows_to_insert)} filas a neteja_setmanal")
+        print(f"✅ Import OK: {len(rows_to_insert)} filas.")
 
 
 if __name__ == "__main__":
