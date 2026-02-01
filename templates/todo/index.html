@@ -49,17 +49,20 @@
                         <td class="text-end">
                             <!--- BOTONES ACCIONES TODO -->
                             <div class="todo-actions d-grid gap-2 d-sm-flex justify-content-sm-end">
-                                <a href="{{ url_for('todo_edit', id=t.id) }}" class="btn btn-info btn-sm">
-                                    Editar
+                                <a href="{{ url_for('todo_edit', id=t.id) }}"
+                                    class="btn btn-sm {% if t.state %}btn-success{% else %}btn-warning{% endif %}"
+>
+                                    {% if t.state %}Veure{% else %}Editar{% endif %}
                                 </a>
 
+
                                 <!--- ELIMINAR (POST) -->
-                                <form method="post" action="{{ url_for('todo_delete', id=t.id) }}" class="m-0"
+                                <!-- <form method="post" action="{{ url_for('todo_delete', id=t.id) }}" class="m-0"
                                     onsubmit="return confirm('Vols eliminar aquesta tasca?');">
                                     <button class="btn btn-danger btn-sm" type="submit">
                                         Eliminar
                                     </button>
-                                </form>
+                                </form> -->
                             </div>
                         </td>
 

@@ -50,7 +50,9 @@ pip install -r requirements.txt
 ```bash
 python -m flask --app app --debug run
 ```
-
+### 6. Que dependencia tengo
+  ```bash
+ pip freeze > requirements.txt
 ---
 
 ## 2️⃣ Flujo normal en tu PC (modificaciones)

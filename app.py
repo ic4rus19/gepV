@@ -159,7 +159,13 @@ def todo_list():
             (Todo.desc.ilike(f"%{q}%"))
         )
 
-    pagination = query.order_by(Todo.id.desc()).paginate(page=page, per_page=per_page, error_out=False)
+    # pagination = query.order_by(Todo.id.desc()).paginate(page=page, per_page=per_page, error_out=False)
+    pagination = query.order_by(
+        Todo.state.asc(),   # pendientes primero
+        Todo.id.desc()      # dentro de cada grupo, las más nuevas arriba
+        ).paginate(
+    page=page, per_page=per_page, error_out=False
+)
 
     return render_template(
         "todo/index.html",
