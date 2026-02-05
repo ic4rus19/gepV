@@ -7,6 +7,10 @@ from flask import Flask, Blueprint, render_template, request, redirect, url_for,
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, date
 
+from sqlalchemy import func
+
+
+
 app = Flask(__name__)
 
 # DB en instance/ (recomendado en Flask)
@@ -55,7 +59,6 @@ def neteja():
     titulo = "Gestió neteja setmanal"
     torns_rojos = {"AP", "B", "V", "FESTIU"}
 
-
     q = (request.args.get("q") or "").strip()
     page = request.args.get("page", 1, type=int)
     per_page = 25
@@ -66,15 +69,25 @@ def neteja():
         fecha = parse_date_q(q)
 
         if fecha:
-        # Buscar por día exacto
+            # -Buscar por día exacto
             query = query.filter(NetejaSetmanal.dia == fecha)
-        else:
-        # Buscar por texto
-            query = query.filter(
-                (NetejaSetmanal.nom.ilike(f"%{q}%")) |
-                (NetejaSetmanal.centre.ilike(f"%{q}%"))
-        )
 
+        else:
+            # -Búsqueda por texto (lista blanca en NOM)
+            allowed = {"M", "I", "L", "D", "EURO", "00NET"}
+
+            q_norm = q.strip().upper().replace("\u00A0", "")
+            nom_norm = func.upper(func.replace(NetejaSetmanal.nom, "\u00A0", ""))
+
+            if q_norm in allowed:
+                # -Si es un valor permitido: buscar SOLO por nom exacto
+                query = query.filter(nom_norm == q_norm)
+            else:
+                # -Si no: búsqueda normal (nom o centre contiene)
+                query = query.filter(
+                    (NetejaSetmanal.nom.ilike(f"%{q}%")) |
+                    (NetejaSetmanal.centre.ilike(f"%{q}%"))
+                )
 
     pagination = query.order_by(
         NetejaSetmanal.dia.asc(),
