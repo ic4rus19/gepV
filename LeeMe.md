@@ -8,12 +8,27 @@ Funcion para mos trar nuestro tree:
         Show-Tree -Path $_.FullName -Depth $Depth -CurrentLevel ($CurrentLevel + 1)
     }
 }
+------------------------------------------------------------
+git status
+git add .
+git commit -m "..."
+git push
+
+git pull
+
+
 # Ejecutar desde el directorio actual, mostrando hasta 2 niveles
 Show-Tree -Depth 2   
 
 # Recursos:
     Bootstrap: https://getbootstrap.com/
     FonsoneW:  https://fontawesome.com/
+
+# MODIFICACIONES
+##  18/02/2025
+### Modificacion del titulo solo una vez Gestió d'espais publics
+### Toquecito a los botones
+### Excel semanal
 
 
 

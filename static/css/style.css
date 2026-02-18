@@ -63,6 +63,9 @@ section {
     font-weight: 800;
 }
 
+h1, h2{
+    color: var(--blueF);
+}
 
 /*-5) NAVBAR*/
 .navbar {
@@ -138,6 +141,18 @@ section {
 
 
 /* -9) BOTONES*/
+.btn-primary {
+    --bs-btn-bg: var(--blue);
+    --bs-btn-border-color: var(--blueF);
+    color: var(--blueF);
+    font-weight: 600;   /*- más fuerte */
+}
+
+.btn-primary:hover {
+    background-color: #ffffff;
+    border-color: var(--blueF);
+    color: var(--blueF);
+}
 .btn-outline-primary {
     --bs-btn-color: var(--blueF);
     --bs-btn-border-color: var(--blueF);
@@ -148,19 +163,6 @@ section {
     border-color: var(--blueF);
     color: #ffffff;
 }
-
-.btn-primary {
-    --bs-btn-bg: var(--blueF);
-    --bs-btn-border-color: var(--blueF);
-    color: #ffffff;
-}
-
-.btn-primary:hover {
-    background-color: #ffffff;
-    border-color: var(--blueF);
-    color: var(--blueF);
-}
-
 
 /* -10) FOOTER*/
 .footer {
