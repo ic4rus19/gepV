@@ -12,9 +12,9 @@ def main():
     wb = load_workbook(EXCEL_PATH)
     ws = wb.active
 
-    # Cabeceras
+    # -Cabeceras
     headers = [(str(c.value).strip().lower() if c.value else "") for c in ws[1]]
-    required = ["nom_porta", "nom_espai", "armari", "num"]
+    required = ["nom_porta", "nom_espai", "armari", "num", "actuals"]
     missing = [c for c in required if c not in headers]
     if missing:
         raise ValueError(f"Faltan columnas: {missing}. Detectadas: {headers}")
@@ -27,6 +27,7 @@ def main():
         nom_espai = r[idx["nom_espai"]]
         armari = r[idx["armari"]]
         num = r[idx["num"]]
+        actuals = r[idx["actuals"]]
 
         if nom_porta is None and nom_espai is None and armari is None and num is None:
             continue
@@ -39,6 +40,10 @@ def main():
             num = int(num) if num is not None else 0
         except Exception:
             num = 0
+        try:
+            actuals = int(actuals) if actuals is not None else None
+        except Exception:
+            actuals = None
 
         if not nom_porta or not nom_espai or not armari:
             continue
@@ -48,7 +53,8 @@ def main():
                 nom_porta=nom_porta,
                 nom_espai=nom_espai,
                 armari=armari,
-                num=num
+                num=num,
+                actuals=actuals
             )
         )
 

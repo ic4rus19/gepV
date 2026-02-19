@@ -113,6 +113,7 @@ class Claus(db.Model):
     nom_espai = db.Column(db.String(255), nullable=False)
     armari = db.Column(db.String(100), nullable=False)
     num = db.Column(db.Integer, nullable=False)
+    actuals = db.Column(db.Integer, nullable=True)
     
 # ---------- /Claus ----------
 @app.route("/claus")

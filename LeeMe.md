@@ -29,6 +29,7 @@ Show-Tree -Depth 2
 ### Modificacion del titulo solo una vez Gestió d'espais publics
 ### Toquecito a los botones
 ### Excel semanal
-
-
+##  19/02/2025
+### Modificacion Agregamos campo en excel CLAUS de llaves actuales...
+### Excel claus en tabla nuevo campo.
 
