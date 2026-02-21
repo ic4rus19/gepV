@@ -56,7 +56,7 @@ def parse_date_q(q):
 
 @app.route("/neteja")
 def neteja():
-    titulo = "Gestió neteja setmanal"
+    titulo = "Gestió Neteja Setmanal"
     torns_rojos = {"AP", "B", "V", "FESTIU"}
 
     q = (request.args.get("q") or "").strip()
@@ -118,7 +118,7 @@ class Claus(db.Model):
 # ---------- /Claus ----------
 @app.route("/claus")
 def claus():
-    titulo = "Gestió de claus"
+    titulo = "Gestió de Claus"
 
     q = (request.args.get("q") or "").strip()
     page = request.args.get("page", 1, type=int)
@@ -159,7 +159,7 @@ class Todo(db.Model):
 # ---------- /TODO (LISTA) ----------
 @app.route("/todo")
 def todo_list():
-    titulo = "Todo-list"
+    titulo = "Todo-List"
 
     q = (request.args.get("q") or "").strip()
     page = request.args.get("page", 1, type=int)
@@ -193,7 +193,7 @@ def todo_list():
 # ---------- /TODO (CREAR) ----------
 @app.route("/todo/new", methods=["GET", "POST"])
 def todo_new():
-    titulo = "Nova tasca"
+    titulo = "Nova Tasca"
 
     if request.method == "POST":
         title = (request.form.get("title") or "").strip()
@@ -212,7 +212,7 @@ def todo_new():
 @app.route("/todo/edit/<int:id>", methods=["GET", "POST"])
 def todo_edit(id):
     todo = Todo.query.get_or_404(id)
-    titulo = "Editar tasca"
+    titulo = "Editar Tasca"
 
     if request.method == "POST":
         todo.title = (request.form.get("title") or "").strip()

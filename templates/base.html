@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='img/favicon-32x32.png') }}">
 
-    
+
 
     <!-- Google Fonts: Raleway -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}"> -->
 
-    <title>{% block title %}{% endblock %} Gestió d'Espais Públics</title>
+    <title>
+        {% if self.title()|trim %}
+        {% block title %}{% endblock %}
+        {% else %}
+        Gestió d'Espais Públics
+        {% endif %}
+    </title>
+
 </head>
 
 <body>
