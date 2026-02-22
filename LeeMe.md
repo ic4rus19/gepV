@@ -25,11 +25,14 @@ Show-Tree -Depth 2
     FonsoneW:  https://fontawesome.com/
 
 # MODIFICACIONES
-##  18/02/2025
+##  18/02/2026
 ### Modificacion del titulo solo una vez Gestió d'espais publics
 ### Toquecito a los botones
 ### Excel semanal
-##  19/02/2025
+##  19/02/2026
 ### Modificacion Agregamos campo en excel CLAUS de llaves actuales...
 ### Excel claus en tabla nuevo campo.
-
+##  21/02/2026
+### Retoques a los titulos.
+##  22/02/2026
+### Rectificació d'horaris.
