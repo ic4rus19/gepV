@@ -1,4 +1,6 @@
 .venv
+data/
+*.xlsx
 
 
 # Byte-compiled / optimized / DLL files
