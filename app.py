@@ -135,6 +135,7 @@ def claus():
 
     pagination = query.order_by(
         Claus.nom_espai.asc(),
+        Claus.armari.asc(),
         Claus.nom_porta.asc(),
         Claus.num.asc(),
         Claus.id.asc()
