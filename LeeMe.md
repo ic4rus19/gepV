@@ -16,7 +16,7 @@ git push
 
 git pull
 
-
+# APARTIR DEL 24/02/2026 NO SUBIREMOS LO QUE SE ENCUENTRE EN LA CARPETA DATA
 # Ejecutar desde el directorio actual, mostrando hasta 2 niveles
 Show-Tree -Depth 2   
 

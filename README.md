@@ -1,186 +1,316 @@
-Python 3.12.8
+# 🐍 PYTHON 3.12.8 — DOCUMENTO MAESTRO (Enfoque Git)
+
+Guía centrada en:
+- Git local
+- Git en PythonAnywhere
+- Flujo de actualización
+- Despliegue
+- Entorno y estructura Flask
+
+---
+
+# 1️⃣ CONTROL DE VERSIONES — GIT (LOCAL)
+
+## CrAtentos al archivo de dependencias
+
+```bash
+pip freeze > requirements.txt
+```
+
+---
+
+## Flujo básico diario
+
+```bash
+git status              # Ver estado actual
+git log --oneline       # Ver historial resumido
+git add .
+git commit -m "Mensaje"
+git push
+```
+
+---
+
+## Ver historial completo
+
+```bash
+git log
+git log --oneline
+git log --oneline --graph --decorate --all
+```
+---
+## Actualizar desde remoto PCAnywere
+
+```bash
+git fetch   # Trae información (no modifica archivos)
+git pull    # Descarga y aplica cambios
+```
+Comprobación:
+
+```bash
+git log -1 --oneline
+```
+---
+# 2️⃣ GIT EN PYTHONANYWHERE (SERVIDOR)
+
+## Primera vez
+```bash
+git clone https://github.com/usuario/proyecto.git
+```
+
+#  ENTORNO LOCAL
+
+## Crear entorno virtual
+
+```bash
+mkdir nProyecto
+cd nProyecto
+python -m venv env
+.\env\Scripts\activate
+python -m pip install --upgrade pip
+pip install flask
+pip list
+deactivate
+```
+
+---
+
+## Dependencias adicionales
+
+### Formularios
+```bash
+pip install -U Flask-WTF
+pip install flask-ckeditor
+```
+
+### Base de datos
+```bash
+pip install Flask-SQLAlchemy
+pip install psycopg2
+```
+
+---
+
+# 4️⃣ DESPLIEGUE EN PYTHONANYWHERE
+
+## Crear nueva Web App
+
+WEB → Add a new web app → Flask → Seleccionar versión.
+
+Revisar:
+- Code
+- wsgi.py
+- Consola Linux
+
+---
+
+## Crear entorno virtual en servidor
+
+```bash
+python --version
+git --version
+mkvirtualenv --python=python3.13 .NombreEntorno
+```
+## Atento al rchivo de dependencias
+
+```bash
+pip freeze > requirements.txt
+```
+
+---
+Instalar dependencias:
+
+```bash
+pip install -r requirements.txt
+pip list
+```
+
+---
+
+## Configurar wsgi.py
+
+```python
+import sys
+
+project_home = '/home/usuario/NOMBRE_PROYECTO'
+if project_home not in sys.path:
+    sys.path.insert(0, project_home)
+
+from run import app as application
+```
+
+Reload desde Web.
+
+---
+# 5️⃣ ESTRUCTURA PROFESIONAL FLASK
+
+```
+run.py
+config.py
+
+blogr/
+│
+├── __init__.py
+├── templates/
+├── static/
+├── auth.py
+├── post.py
+├── home.py
+└── models.py
+```
+
+---
+
+# 6️⃣ CONCEPTOS CLAVE
+
+## Endpoints
+
+- Flask enruta por endpoints, no por archivos
+- `url_for()` usa endpoints
+- Con Blueprints → `blueprint.funcion`
+
+---
+
+## Métodos HTTP
+
+**GET**
+- Mostrar páginas
+- No modifica datos
+
+**POST**
+- Crear o modificar información
+- No envía datos en la URL
+
+---
+
+# 🚀 INICIAR APLICACIÓN
+
+```bash
+python run.py
+```
+
+---
+
+# 📌 RESUMEN
+
+Documento enfocado en:
+
+✔ Git local  
+✔ Git servidor  
+✔ Actualizaciones seguras  
+✔ Despliegue PythonAnywhere  
+✔ Estructura Flask  
+✔ Dependencias  
+✔ PostgreSQL  
+
+Base operativa para cualquier proyecto Flask.
 
 
-*******************************************CREAMOS ENTORNO VIRTUAL*********************************
-*******************************************especificamente para cualquier proyecto*********************************
-1. mkdir nProyecto          Creamos la carpeta con el nombre el proyecto
-2. cd .\nProyecto\          Accedemos
-3. python -m venv nProyecto Creamos el entorno del proyecto para agregar las dependencias
-4.  .\env\Scripts\activate  ACTIVAMOS ------------------IMPORTANTE-----------------
-5. pip list                 Muestra lo que tenemos instalado para el proyecto
-6. python.exe -m pip install --upgrade pip     ---------Por si no esta actualizado.
-7. pip install flask        Instalamos flask
-8. pip llist                Comprobamos
-9. deactivate               Desactivamos el entorno
 
-# INSTALACIÓN DE DEPENDENCIAS PARA LOS PROYECTOS
-11. Formularios o Editor de texto enriquecido en tus formularios Flask
-    pip install -U Flask-WTF
-    pip install flask-ckeditor
-12. flask SQLAlchemy         Base de Datos
-    pip install Flask-SQLAlchemy
+# 📝 ANEXO — Notas destacadas
 
-          
-         
-*******************************************especificamente para cualquier proyecto*********************************
-13. Se creara la carpeta instance con la bd creada y le cambiaremos el nombre 
-    esto establecera la conexión con exito......Leccion 36
+## 📁 Carpeta instance (Base de datos)
 
-👉GET: Pedir datos.
-  Se usa para mostrar páginas o formularios.
-  No modifica nada.
+Se creará la carpeta `instance/` donde se alojará la base de datos.  
+Podemos cambiar el nombre del archivo `.db` si es necesario.
 
-👉POST: Enviar datos.
-  Se usa para guardar, crear o modificar información.
-  Envía datos de forma segura (no en la URL).
+Esto permite que Flask gestione correctamente la conexión a la base de datos.  
+(Referencia: Lección 36)
 
-ATENTOS A LA CLASE 11..
+---
 
+## 🌐 Dominio en PythonAnywhere
 
-# ENTORNO DE PRUEBAS de phytonAnywhere
+El dominio de pruebas tendrá el nombre del usuario:
 
-# 1- Creamos en nuestro proyecto el archivo de requirements.txt
-        pip freeze > requirements.txt
-# 2- Creamos el repositorio github (fáci)
-        Nuevo repositorio etc.
-# 3- Git en nuestro PC directorio de nuestros proyectos.
-        git log --oneline (Historial de commits).
-        git add .
-        git commit -m "Organiza..."
-        git push
+```
+usuario.pythonanywhere.com
+```
 
+Ejemplo:
+```
+ic4rus.pythonanywhere.com
+```
 
-# Pythoanywhere
-    El dominio sera de pruebas y cogeara el nombre del correo:
-        ic4rus.pythonanywhere.com.
-         Accedemos a pythoanywhere      
+---
 
-# Desde pythonAnywhere ---- WEB CREAMOS Add a new web app
-    Nos dara a elegir el framework:
-        Flask:
-            Selecionamos la Versión.
-            Creara la aplicación y nos mnostrara la ruta.
-            Inspecionamos des de web:
-                Apartado Code
-                    Atentos wsgi.py donde estará la configuración.
-                Revisamos todas las pestañas y nos hacemos con el menu:
-                    Podemos acceder a la consola que sera de LINUX.
-                Virtualenv:
-                Qué es realmente un “env”???????
-                        Un venv es una carpeta con un Python “aislado” (o enlaces),pip, y todas las librerías que instalas (Flask, etc.)
-                        Sirve para que tu proyecto use sus propias dependencias y versiones, sin mezclarlas con otros proyectos del sistema.
-                Creamos el entorno virtual: (IMPORTANTISIMO)
-                # ---ATENCIÓN-----
-                # Desde la consola en el servidor, CREAMOS el entorno virtual y clonamos el PROYECTO
-                - Podemos mirar la documentación:
-                    https://help.pythonanywhere.com/pages/Flask/
-                    Desde la raiz en bash del servidor:
-                        python --version
-                        git --version
-                        mkvirtualenv --python=python3.13 .Nombre del entornoVirtual
-                    Clonamos nuestro repositorio
-                        git clone https://github.com/ic4rus19/list-todo.git
-                    Instalamos los requerimientos de la aplicación
-                        pip install -r requirements.txt
-                        pip list      
-# DESPLEGAR LA APLICACIÓN
-    Borramos la anterior:
-    Add a new web app
-        Manual configuration:
-            En WEB:
-            Coloacamos la ruta del proyecto
-                pwd
-            Colocamos la ruta del env creado en el servidor
-                which python
-                    /home/ic4rus/.virtualenvs/.env-list
-            ***************Por ultimo modificamos el archivo xxxxwsgi.py
+## 🔄 Rehacer despliegue en PythonAnywhere
 
-                import sys
-                project_home = '/home/ic4rus/Nom.PROYECTO'
-                if project_home not in sys.path:
-                    sys.path = [project_home] + sys.path
-                from run import app as application  # noqa
+Si es necesario reiniciar desde cero:
 
-            Reload desde WEB
+- Borrar aplicación anterior.
+- Crear nueva Web App.
+- Configurar manualmente.
+- Revisar `wsgi.py`.
+- Hacer Reload desde Web.
 
-# Actualizaciones de GitHub desde PC
-        git add .
-        git commit -m "gepv02"
-        git push
+---
 
-# Desde Servidor(enconsola y desde el directorio env)
-    Por primera vez:
-        git clone https://github.com/ic4rus19/gepVallgorguina.git
-    Luego:    
-        git pull
+## 🧠 Recordatorio importante
 
-# Comprovaciones:
-    cd ~/gepVallgorguina
-    git log -1 --oneline
+En el servidor:
 
-Endpoint =  El identificador interno de una ruta que apunta a una función.
-            Flask enruta por endpoints, no por archivos
-            url_for() siempre usa endpoints
-            Con Blueprints: blueprint.funcion
+- Crear entorno virtual antes de instalar dependencias.
+- Clonar proyecto después de crear el entorno.
+- Instalar dependencias desde `requirements.txt`.
 
-*************************************PROYECTO SPACIOS PUBLICOS**************************************
-Craación, lectura y buscador de blogs. (ESPACIOS PUBLICOS)
-    Editar el blog y trabajar con el texto.
-    Buscador de blogs, que tengan que ver con la busqueda realizada.
-    Tambien crearemos un registro. Nombre y correo.
-    Tendremos un apartado para crear o modificar nuestros blogs.
-        Modificaciones de perfil.
-            Nombre o usuario o cambiar contraseña.
-        Añadir blog.
-            Trabajar con un editor de texto e importador de img.
-        Ver las publicaciones.
+Orden correcto:
+```bash
+mkvirtualenv --python=python3.13 .NombreEntorno
+git clone https://github.com/usuario/proyecto.git
+pip install -r requirements.txt
+```
 
-1.- Creamos carpeta nProyecto:         mkdir nProyecto
-2.- Creamos entorno virtual:           python -m venv nProyecto
-3.- Activamos entorno:                 .\env-blog\Scripts\activate
-4.- Instalamos Flask y actualizamos:   pip install flask
-5.- Con el entorno activado instalaremos las dependencia de python
-    
+---
 
-INICIAR APLICACIÓN: PYTHON RUN.PY
-    mabel@gmail   1234 -------Tenemos el apartado de cambiar contraseña
+## 🗄 PostgreSQL — Librerías necesarias
 
-**5.- Creamos archivos o estructura:**
-        1. Principal arranque aplicación: run.py
-        2. Donde estara la configuración: config.py
-        3. Directorio principal:
-            blogr
-                4.-  __init_.py. Se usa para iniciar la app.
-                5.- templates. Carpeta para las plantillas.
-                6.- statics. Para los estaticos.
-                7.- auth.py . Para la autentificación. Vistas y rutas.
-                8.- post.py . Para las publicaciones.
-                9.- home.py . Para la páguina principal.
-                10- models.py . Creacion de modelos                
-        **ESTRUCTURA BASE DEL PROYECTO**
-                
-            
-6.- Creamos las vistas o Blue Print. Desde home.py
+Instalar librerías:
 
-7.- Instalacion de https://www.postgresql.org/
-    Video de instalación:  https://www.youtube.com/watch?v=n5Ec9bMouWQ
-    Librerias que utilizaremos para la conexión de la bd
-        pip install flask-sqlalchemy
-        pip install psycopg2
-        pip list
+```bash
+pip install flask-sqlalchemy
+pip install psycopg2
+```
 
-    Como hacer la configuración:
-        https://flask-sqlalchemy.readthedocs.io/en/stable/config/#configuration-keys
-        # PostgreSQL
-        postgresql://scott:tiger@localhost/project
+### ¿Qué aporta cada una?
 
+- **flask-sqlalchemy**
+  - Integra SQLAlchemy con Flask.
+  - Permite definir modelos como clases.
+  - Gestiona la conexión a la base de datos.
+  - Facilita consultas ORM (sin escribir SQL directamente).
 
-# Endpoint =  El identificador interno de una ruta que apunta a una función.
-    Flask enruta por endpoints, no por archivos
-    url_for() siempre usa endpoints
-    Con Blueprints: blueprint.funcion
+- **psycopg2**
+  - Es el conector oficial de Python para PostgreSQL.
+  - Permite que SQLAlchemy se comunique con la base de datos PostgreSQL.
 
+---
 
+Cadena de conexión ejemplo:
 
+```
+postgresql://usuario:password@localhost/nombrebd
+```
 
+Formato:
+```
+postgresql://USUARIO:CONTRASEÑA@HOST/NOMBRE_BASE_DATOS
+```
 
+## 🧪 Usuario de prueba (Proyecto Espacios Públicos)
+
+Usuario ejemplo utilizado en pruebas:
+
+```
+mabel@gmail
+1234
+```
+
+---
+
+## ⚠ Recordatorio de clase
+
+Revisar especialmente:
+- Configuración de la base de datos.
+- Uso correcto de endpoints.
+- Separación por Blueprints.
