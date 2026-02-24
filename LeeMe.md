@@ -36,3 +36,5 @@ Show-Tree -Depth 2
 ### Retoques a los titulos.
 ##  22/02/2026
 ### Rectificació d'horaris.
+## 24/02/2026
+### Ultimos ficheros de datos y actualizacion de leeme
