@@ -2,9 +2,11 @@
 # Importador de claus con control de cambios por HASH
 # ------------------------------------------------------------
 
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
+
 import os
 import hashlib
-import warnings
 from openpyxl import load_workbook
 from app import app, db, Claus
 
