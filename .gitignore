@@ -1,5 +1,9 @@
 .venv
-data/
+# Mantener carpeta data pero ignorar su contenido
+data/*
+!data/.gitkeep
+
+# Ignorar todos los Excel en cualquier carpeta
 *.xlsx
 
 
